@@ -4,6 +4,7 @@ import { LoginComponent } from './routes/login/login.component';
 import { ClientesComponent } from './routes/clientes/clientes.component';
 import { ReportesComponent } from './routes/reportes/reportes.component';
 import { authGuard } from './core/auth.guard';
+import { AdminComponent } from './routes/admin/admin.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -11,4 +12,10 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canMatch: [authGuard] },
   { path: 'clientes', component: ClientesComponent, canMatch: [authGuard] },
   { path: 'reportes', component: ReportesComponent, canMatch: [authGuard] },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canMatch: [authGuard],
+    data: { roles: ['admin'] },
+  },
 ];
